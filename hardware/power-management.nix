@@ -20,8 +20,11 @@
   };
 
   services.power-profiles-daemon.enable = false;
+
+  programs.gamemode.enable = true;
+
   services.tlp.pd.enable = true;
-  
+
   # Overheating prevention
   services.thermald.enable = true;
 

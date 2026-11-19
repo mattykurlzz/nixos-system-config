@@ -11,6 +11,7 @@
         vpl-gpu-rt # oneVPL (QSV) runtime
         intel-compute-runtime # Optional: OpenCL (NEO) for compute tasks
       ];
+      enable32Bit = true;
     };
     cpu.intel.updateMicrocode = true;
     enableRedistributableFirmware = true;

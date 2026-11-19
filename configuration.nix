@@ -39,6 +39,9 @@
     };
     # Enable CUPS to print documents.
     # printing.enable = true;
+    udev.extraRules = ''
+      SUBSYSTEM=="usb", ATTR{idVendor}=="0955", MODE="0664", GROUP="plugdev"
+    '';
   };
 
   programs.niri.enable = true;
@@ -59,6 +62,8 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
+  users.groups.plugdev = { };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."avnek" = {
     isNormalUser = true;
@@ -66,6 +71,8 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "video"
+      "plugdev"
     ];
     linger = true;
   };
@@ -123,6 +130,7 @@
       "ntfs"
       "exfat"
     ];
+    kernelModules = [ "uvcvideo" ];
   };
 
   # Docker virtualization
